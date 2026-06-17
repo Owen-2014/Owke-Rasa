@@ -1,0 +1,662 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OwKe Rasa - Aplikasi Pemesanan Kue Lezat</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Cute Pastel Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Fredoka', sans-serif;
+    }
+    /* Custom Pastel Colors */
+    .bg-pastel-green { background-color: #E2F0D9; } /* Hijau Pastel */
+    .bg-pastel-yellow { background-color: #FFF2CC; } /* Kuning Pastel */
+    .bg-pastel-inner { background-color: #FFFDF0; } /* Gelembung Kotak 2 (Lebih terang agar kontras) */
+    .bg-pastel-brown { background-color: #A1887F; } /* Cokelat Pastel */
+    .bg-pastel-brown-hover { background-color: #8D6E63; }
+    
+    /* Custom Scrollbar for cute UI */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #E2F0D9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #A1887F;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-pastel-green min-h-screen flex flex-col justify-between text-slate-700">
+
+  <!-- Header App -->
+  <header class="py-6 px-4 text-center">
+    <h1 class="text-4xl font-bold text-[#6D4C41] drop-shadow-sm">OwKe Rasa 🍰</h1>
+    <p class="text-sm text-[#8D6E63] mt-1 font-medium">Cita Rasa Manis di Setiap Gigitan</p>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow flex items-center justify-center px-4 pb-12">
+    <div class="w-full max-w-md">
+      
+      <!-- LAYER 1: HALAMAN UTAMA (MENU SELECTION) -->
+      <div id="screen-home" class="space-y-6">
+        <h2 class="text-xl font-semibold text-center text-[#5D4037] mb-4">Pilih Menu Favoritmu ✨</h2>
+        
+        <!-- Menu List Grid -->
+        <div class="space-y-6">
+          
+          <!-- Menu 1: Tiramisu -->
+          <div class="bg-pastel-yellow rounded-3xl p-5 shadow-md border-2 border-amber-200/50 transition transform hover:-translate-y-1">
+            <!-- Gelembung Kotak 2 -->
+            <div class="bg-pastel-inner rounded-2xl p-4 flex flex-col items-center border border-amber-100 mb-4">
+              <!-- Gambar Menu (SVG) -->
+              <div class="w-28 h-28 flex items-center justify-center bg-amber-50 rounded-full mb-3 shadow-inner">
+                <svg viewBox="0 0 100 100" class="w-20 h-20">
+                  <!-- Tiramisu Cake Drawing -->
+                  <path d="M20 70 L20 50 Q20 45 25 45 L75 45 Q80 45 80 50 L80 70 Q80 75 75 75 L25 75 Q20 75 20 70 Z" fill="#D7CCC8" />
+                  <!-- Layers -->
+                  <rect x="20" y="52" width="60" height="6" fill="#8D6E63" />
+                  <rect x="20" y="62" width="60" height="6" fill="#5D4037" />
+                  <!-- Cream Topping -->
+                  <path d="M25 45 C30 40, 35 45, 40 42 C45 40, 50 45, 55 42 C60 40, 65 45, 70 42 C75 40, 80 45, 80 45" fill="none" stroke="#F5F5F5" stroke-width="6" stroke-linecap="round" />
+                  <circle cx="35" cy="40" r="4" fill="#E0F7FA" />
+                  <circle cx="50" cy="38" r="4" fill="#FF8A80" />
+                  <circle cx="65" cy="40" r="4" fill="#E8F5E9" />
+                  <!-- Cocoa Powder Sprinkles -->
+                  <circle cx="30" cy="49" r="1.5" fill="#3E2723" />
+                  <circle cx="45" cy="48" r="1.5" fill="#3E2723" />
+                  <circle cx="60" cy="49" r="1.5" fill="#3E2723" />
+                  <circle cx="70" cy="48" r="1.5" fill="#3E2723" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#5D4037]">Tiramisu</h3>
+              <p class="text-xs text-amber-800 text-center mt-1">Paduan lembut kopi, mascarpone, dan bubuk cokelat premium.</p>
+              <div class="mt-2 text-sm font-semibold text-[#8D6E63] space-y-0.5">
+                <div>Kecil: Rp 25.000</div>
+                <div>Besar: Rp 35.000</div>
+              </div>
+            </div>
+            <!-- Tombol Pesan Ini -->
+            <button onclick="selectMenu('tiramisu')" class="w-full bg-pastel-brown hover:bg-pastel-brown-hover text-white font-semibold py-3 px-6 rounded-2xl shadow transition active:scale-95 focus:outline-none">
+              Pesan Ini 🍰
+            </button>
+          </div>
+
+          <!-- Menu 2: Kue Bolu -->
+          <div class="bg-pastel-yellow rounded-3xl p-5 shadow-md border-2 border-amber-200/50 transition transform hover:-translate-y-1">
+            <!-- Gelembung Kotak 2 -->
+            <div class="bg-pastel-inner rounded-2xl p-4 flex flex-col items-center border border-amber-100 mb-4">
+              <!-- Gambar Menu (SVG) -->
+              <div class="w-28 h-28 flex items-center justify-center bg-amber-50 rounded-full mb-3 shadow-inner">
+                <svg viewBox="0 0 100 100" class="w-20 h-20">
+                  <!-- Bolu Sponge Cake Drawing -->
+                  <ellipse cx="50" cy="65" rx="32" ry="16" fill="#F4B400" />
+                  <rect x="18" y="45" width="64" height="20" fill="#F4B400" />
+                  <ellipse cx="50" cy="45" rx="32" ry="16" fill="#FFE082" />
+                  <!-- Swirl on Top -->
+                  <path d="M30 45 Q50 35 70 45" fill="none" stroke="#FFF9C4" stroke-width="4" stroke-linecap="round" />
+                  <path d="M38 45 Q50 38 62 45" fill="none" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" />
+                  <!-- Pandan/Cherry garnish -->
+                  <circle cx="50" cy="42" r="5" fill="#D32F2F" />
+                  <path d="M50 37 Q55 30 52 25" fill="none" stroke="#2E7D32" stroke-width="2" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#5D4037]">Kue Bolu</h3>
+              <p class="text-xs text-amber-800 text-center mt-1">Bolu jadul panggang super lembut dengan wangi mentega yang khas.</p>
+              <div class="mt-2 text-sm font-semibold text-[#8D6E63]">
+                Standar: Rp 60.000
+              </div>
+            </div>
+            <!-- Tombol Pesan Ini -->
+            <button onclick="selectMenu('kue_bolu')" class="w-full bg-pastel-brown hover:bg-pastel-brown-hover text-white font-semibold py-3 px-6 rounded-2xl shadow transition active:scale-95 focus:outline-none">
+              Pesan Ini 🍰
+            </button>
+          </div>
+
+          <!-- Menu 3: Cheesecake -->
+          <div class="bg-pastel-yellow rounded-3xl p-5 shadow-md border-2 border-amber-200/50 transition transform hover:-translate-y-1">
+            <!-- Gelembung Kotak 2 -->
+            <div class="bg-pastel-inner rounded-2xl p-4 flex flex-col items-center border border-amber-100 mb-4">
+              <!-- Gambar Menu (SVG) -->
+              <div class="w-28 h-28 flex items-center justify-center bg-amber-50 rounded-full mb-3 shadow-inner">
+                <svg viewBox="0 0 100 100" class="w-20 h-20">
+                  <!-- Cheesecake Slice Drawing -->
+                  <path d="M15 65 L80 75 L80 45 L15 35 Z" fill="#FFF59D" />
+                  <!-- Crust Base -->
+                  <path d="M15 65 L80 75 L80 80 L15 70 Z" fill="#8D6E63" />
+                  <!-- Topping Strawberry Glaze -->
+                  <path d="M15 35 L80 45 L80 48 L15 38 Z" fill="#E57373" />
+                  <path d="M45 40 Q50 55 53 42" fill="none" stroke="#D32F2F" stroke-width="3" stroke-linecap="round" />
+                  <path d="M60 42 Q65 57 68 44" fill="none" stroke="#D32F2F" stroke-width="3" stroke-linecap="round" />
+                  <!-- Fresh Strawberry -->
+                  <path d="M70 33 C68 33, 65 37, 68 40 C70 42, 74 42, 75 39 C76 36, 73 33, 70 33" fill="#C2185B" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#5D4037]">Cheesecake</h3>
+              <p class="text-xs text-amber-800 text-center mt-1">Keju lumer melimpah dengan pinggiran biskuit renyah gurih.</p>
+              <div class="mt-2 text-sm font-semibold text-[#8D6E63] space-y-0.5">
+                <div>Mini: Rp 8.000 | Kecil: Rp 25.000 | Besar: Rp 35.000</div>
+              </div>
+            </div>
+            <!-- Tombol Pesan Ini -->
+            <button onclick="selectMenu('cheesecake')" class="w-full bg-pastel-brown hover:bg-pastel-brown-hover text-white font-semibold py-3 px-6 rounded-2xl shadow transition active:scale-95 focus:outline-none">
+              Pesan Ini 🍰
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- LAYER 2: PROSES PEMBELIAN (PURCHASE FORM) -->
+      <div id="screen-purchase" class="hidden space-y-6">
+        <h2 class="text-xl font-semibold text-center text-[#5D4037] mb-4">Detail Pesanan Anda 📝</h2>
+        
+        <!-- Gelembung Kotak 1 Yang Besar -->
+        <div class="bg-pastel-yellow rounded-3xl p-6 shadow-lg border-2 border-amber-200/50 space-y-6">
+          
+          <!-- Selected Item Header inside Gelembung 2 -->
+          <div class="bg-pastel-inner rounded-2xl p-4 flex items-center space-x-4 border border-amber-100">
+            <div id="selected-menu-svg" class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-1 shadow-inner">
+              <!-- Dynamically Loaded SVG -->
+            </div>
+            <div>
+              <h3 id="selected-menu-title" class="text-lg font-bold text-[#5D4037]">-</h3>
+              <p class="text-xs text-[#8D6E63]">OwKe Rasa Spesial</p>
+            </div>
+          </div>
+
+          <!-- +/- Tambah atau Kurang Kuantitas -->
+          <div class="flex flex-col items-center justify-center space-y-2">
+            <span class="text-xs font-semibold text-amber-900 tracking-wider uppercase">Jumlah Pembelian</span>
+            <div class="flex items-center space-x-6">
+              <button onclick="updateQty(-1)" class="w-10 h-10 bg-pastel-brown hover:bg-pastel-brown-hover text-white font-bold rounded-full flex items-center justify-center shadow focus:outline-none active:scale-90 transition">
+                <span class="text-lg">-</span>
+              </button>
+              <span id="quantity-display" class="text-2xl font-bold text-[#5D4037] min-w-[2rem] text-center">1</span>
+              <button onclick="updateQty(1)" class="w-10 h-10 bg-pastel-brown hover:bg-pastel-brown-hover text-white font-bold rounded-full flex items-center justify-center shadow focus:outline-none active:scale-90 transition">
+                <span class="text-lg">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Biaya Tambahan 3.000 -->
+          <div class="bg-amber-50 rounded-2xl p-3 text-center border border-amber-200">
+            <span class="text-xs text-amber-800 font-medium">✨ Biaya Layanan & Pengemasan ✨</span>
+            <div class="text-base font-bold text-[#5D4037] mt-0.5">Biaya Tambahan Rp 3.000</div>
+          </div>
+
+          <!-- Pilihan Besar / Kecil / Mini / Standar -->
+          <div class="space-y-3">
+            <span class="block text-xs font-semibold text-amber-900 tracking-wider text-center uppercase">Pilih Ukuran Kue</span>
+            <div id="size-options-container" class="grid grid-cols-2 gap-3">
+              <!-- Dynamically populated size buttons -->
+            </div>
+          </div>
+
+          <!-- Summary Price Display -->
+          <div class="pt-2 border-t-2 border-amber-200/40 text-center">
+            <span class="text-xs text-[#8D6E63]">Estimasi Total</span>
+            <div id="price-preview" class="text-2xl font-bold text-[#5D4037]">Rp 0</div>
+          </div>
+
+          <!-- Tombol Pembayaran -->
+          <button id="btn-payment-submit" disabled onclick="goToPayment()" class="w-full py-4 px-6 rounded-2xl font-bold text-white shadow transition focus:outline-none opacity-50 bg-gray-400 cursor-not-allowed">
+            Pembayaran 💳
+          </button>
+          
+          <button onclick="backToHome()" class="w-full bg-amber-100 hover:bg-amber-200 text-[#5D4037] font-semibold py-2 px-6 rounded-xl text-sm transition focus:outline-none">
+            Kembali ke Menu
+          </button>
+
+        </div>
+      </div>
+
+
+      <!-- LAYER 3: PROSES PEMBAYARAN & PEMBAYARAN KEDUA -->
+      <div id="screen-payment" class="hidden space-y-6">
+        <h2 class="text-xl font-semibold text-center text-[#5D4037] mb-4">Selesaikan Pembayaran 💸</h2>
+        
+        <!-- Big Bubble Container -->
+        <div class="bg-pastel-yellow rounded-3xl p-6 shadow-lg border-2 border-amber-200/50 space-y-6 relative overflow-hidden">
+          
+          <!-- Receipt Card -->
+          <div id="receipt-container" class="hidden bg-pastel-inner rounded-2xl p-5 border-2 border-dashed border-[#8D6E63] space-y-4 animate-fade-in relative">
+            <div class="text-center pb-2 border-b border-[#D7CCC8]">
+              <div class="font-bold text-lg text-[#5D4037]">OwKe Rasa Receipt</div>
+              <div id="receipt-id" class="text-xs text-amber-800 tracking-wider mt-0.5">ID: -</div>
+            </div>
+            
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span>Menu</span>
+                <span id="receipt-item-name" class="font-semibold text-right">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Ukuran</span>
+                <span id="receipt-item-size" class="font-semibold">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Kuantitas</span>
+                <span id="receipt-item-qty" class="font-semibold">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Harga Satuan</span>
+                <span id="receipt-item-price" class="font-semibold">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Biaya Tambahan</span>
+                <span class="font-semibold">Rp 3.000</span>
+              </div>
+              <div class="pt-2 border-t border-dashed border-[#D7CCC8] flex justify-between text-base font-bold text-[#5D4037]">
+                <span>Total Bayar</span>
+                <span id="receipt-total">-</span>
+              </div>
+            </div>
+            <div class="text-center text-[10px] text-amber-700/80">
+              *Silakan simpan informasi di atas sebagai bukti pembelian Anda.
+            </div>
+          </div>
+
+          <!-- Tombol Simpan Struk -->
+          <div class="flex justify-center">
+            <button id="btn-save-receipt" onclick="generateReceipt()" class="w-full bg-pastel-brown hover:bg-pastel-brown-hover text-white font-bold py-3 px-6 rounded-2xl shadow transition active:scale-95 focus:outline-none flex items-center justify-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+              </svg>
+              <span>Simpan Struk</span>
+            </button>
+          </div>
+
+          <!-- Floating Notification Box Area (Mengambang) -->
+          <div id="floating-toast" class="hidden transform transition-all duration-300 scale-95 opacity-0 bg-[#D7CCC8] border-2 border-[#8D6E63] text-[#4E342E] rounded-2xl p-4 shadow-xl text-center space-y-3">
+            <p id="floating-toast-text" class="text-sm font-semibold leading-relaxed">
+              Screenshot Struk ini lalu kirim ke nomor wa dibawah
+            </p>
+            <!-- Bagian ini diatur agar permanen & tidak terpengaruh efek opacity timeout -->
+            <div id="wa-display-area" class="text-xs text-[#5D4037] font-bold bg-[#FFFDF0] py-1 px-3 rounded-lg border border-amber-200 inline-block">
+              WhatsApp: 085694721512
+            </div>
+            <button id="btn-copy-wa" onclick="copyWA()" class="w-full bg-[#8D6E63] hover:bg-[#795548] text-white text-xs font-bold py-2 px-4 rounded-xl transition active:scale-95 focus:outline-none">
+              Salin Nomor WhatsApp
+            </button>
+          </div>
+
+          <!-- Waktu 3 Menit Countdown -->
+          <div class="bg-red-50 rounded-2xl p-4 text-center border border-red-100 flex flex-col items-center">
+            <span class="text-xs text-red-600 font-semibold tracking-wider uppercase">Batas Waktu Pembayaran</span>
+            <div id="countdown-timer" class="text-3xl font-black text-red-500 mt-1">03:00</div>
+            <span class="text-[10px] text-red-400 mt-1">Harap selesaikan sebelum waktu habis</span>
+          </div>
+
+          <!-- Tombol Kembali Ke Halaman Awal -->
+          <button onclick="resetAndBackToHome()" class="w-full bg-amber-100 hover:bg-amber-200 text-[#5D4037] font-semibold py-3 px-6 rounded-2xl transition active:scale-95 focus:outline-none">
+            Kembali ke Beranda 🏠
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Info -->
+  <footer class="py-4 text-center text-xs text-[#8D6E63]/80 font-medium bg-pastel-green border-t border-amber-200/20">
+    &copy; 2026 OwKe Rasa. All Rights Reserved.
+  </footer>
+
+  <!-- Notification Banner (Custom Alert Replacement) -->
+  <div id="custom-alert" class="fixed bottom-6 right-6 left-6 md:left-auto md:w-80 bg-slate-800 text-white rounded-xl p-4 shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
+    <div class="flex items-center space-x-3">
+      <span class="text-xl">💡</span>
+      <p id="custom-alert-msg" class="text-xs font-medium"></p>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // App State
+    const menus = {
+      tiramisu: {
+        title: "Tiramisu",
+        sizes: {
+          kecil: 25000,
+          besar: 35000
+        },
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 L20 50 Q20 45 25 45 L75 45 Q80 45 80 50 L80 70 Q80 75 75 75 L25 75 Q20 75 20 70 Z" fill="#D7CCC8" /><rect x="20" y="52" width="60" height="6" fill="#8D6E63" /><rect x="20" y="62" width="60" height="6" fill="#5D4037" /><path d="M25 45 C30 40, 35 45, 40 42 C45 40, 50 45, 55 42 C60 40, 65 45, 70 42 C75 40, 80 45, 80 45" fill="none" stroke="#F5F5F5" stroke-width="6" stroke-linecap="round" /><circle cx="35" cy="40" r="4" fill="#E0F7FA" /><circle cx="50" cy="38" r="4" fill="#FF8A80" /><circle cx="65" cy="40" r="4" fill="#E8F5E9" /></svg>`
+      },
+      kue_bolu: {
+        title: "Kue Bolu",
+        sizes: {
+          standar: 60000
+        },
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><ellipse cx="50" cy="65" rx="32" ry="16" fill="#F4B400" /><rect x="18" y="45" width="64" height="20" fill="#F4B400" /><ellipse cx="50" cy="45" rx="32" ry="16" fill="#FFE082" /><path d="M30 45 Q50 35 70 45" fill="none" stroke="#FFF9C4" stroke-width="4" stroke-linecap="round" /><circle cx="50" cy="42" r="5" fill="#D32F2F" /></svg>`
+      },
+      cheesecake: {
+        title: "Cheesecake",
+        sizes: {
+          mini: 8000,
+          kecil: 25000,
+          besar: 35000
+        },
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 65 L80 75 L80 45 L15 35 Z" fill="#FFF59D" /><path d="M15 65 L80 75 L80 80 L15 70 Z" fill="#8D6E63" /><path d="M15 35 L80 45 L80 48 L15 38 Z" fill="#E57373" /></svg>`
+      }
+    };
+
+    let currentSelection = {
+      menuKey: null,
+      size: null,
+      qty: 1
+    };
+
+    const BIAYA_TAMBAHAN = 3000;
+    let timerInterval = null;
+    let toastTimeout1 = null;
+    let toastTimeout2 = null;
+
+    // Custom Alert Notification Function
+    function showAlert(msg) {
+      const alertEl = document.getElementById('custom-alert');
+      const alertMsg = document.getElementById('custom-alert-msg');
+      alertMsg.textContent = msg;
+      
+      alertEl.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      alertEl.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        alertEl.classList.remove('translate-y-0', 'opacity-100');
+        alertEl.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+
+    // Navigation: Select Menu
+    function selectMenu(menuKey) {
+      currentSelection.menuKey = menuKey;
+      currentSelection.size = null; // reset size selection
+      currentSelection.qty = 1; // reset qty
+      
+      // Load selected data
+      const menuData = menus[menuKey];
+      document.getElementById('selected-menu-title').textContent = menuData.title;
+      document.getElementById('selected-menu-svg').innerHTML = menuData.svg;
+      document.getElementById('quantity-display').textContent = currentSelection.qty;
+      
+      // Render sizes options dynamically
+      const sizeContainer = document.getElementById('size-options-container');
+      sizeContainer.innerHTML = '';
+      
+      const sizeKeys = Object.keys(menuData.sizes);
+      
+      sizeKeys.forEach(size => {
+        const price = menuData.sizes[size];
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = `size-btn-${size}`;
+        btn.className = "border-2 border-amber-300 text-[#5D4037] font-semibold py-3 px-2 rounded-2xl transition focus:outline-none hover:bg-amber-100 flex flex-col items-center justify-center active:scale-95";
+        btn.onclick = () => selectSize(size);
+        
+        btn.innerHTML = `
+          <span class="capitalize text-sm font-bold">${size}</span>
+          <span class="text-xs text-amber-900 mt-1">Rp ${price.toLocaleString('id-ID')}</span>
+        `;
+        sizeContainer.appendChild(btn);
+      });
+
+      // Show purchasing screen
+      switchScreen('screen-home', 'screen-purchase');
+      updatePrice();
+      checkFormValidity();
+    }
+
+    // Select Size & Update Visual
+    function selectSize(size) {
+      currentSelection.size = size;
+      
+      // Highlight selection
+      const menuData = menus[currentSelection.menuKey];
+      Object.keys(menuData.sizes).forEach(s => {
+        const btn = document.getElementById(`size-btn-${s}`);
+        if (btn) {
+          if (s === size) {
+            btn.classList.remove('border-amber-300', 'bg-transparent');
+            btn.classList.add('border-[#A1887F]', 'bg-[#A1887F]/20');
+          } else {
+            btn.classList.remove('border-[#A1887F]', 'bg-[#A1887F]/20');
+            btn.classList.add('border-amber-300', 'bg-transparent');
+          }
+        }
+      });
+      
+      updatePrice();
+      checkFormValidity();
+    }
+
+    // Quantity Counter +/-
+    function updateQty(change) {
+      let newQty = currentSelection.qty + change;
+      if (newQty < 1) newQty = 1;
+      currentSelection.qty = newQty;
+      document.getElementById('quantity-display').textContent = newQty;
+      updatePrice();
+      checkFormValidity();
+    }
+
+    // Price calculator preview
+    function updatePrice() {
+      if (!currentSelection.menuKey) return;
+      const menuData = menus[currentSelection.menuKey];
+      let basePrice = 0;
+      
+      if (currentSelection.size && menuData.sizes[currentSelection.size]) {
+        basePrice = menuData.sizes[currentSelection.size];
+      }
+      
+      const totalPrice = (basePrice * currentSelection.qty) + BIAYA_TAMBAHAN;
+      
+      if (currentSelection.size) {
+        document.getElementById('price-preview').textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+      } else {
+        document.getElementById('price-preview').textContent = `Pilih ukuran dahulu`;
+      }
+    }
+
+    // Enable/Disable "Pembayaran" button
+    function checkFormValidity() {
+      const btn = document.getElementById('btn-payment-submit');
+      if (currentSelection.menuKey && currentSelection.size && currentSelection.qty > 0) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'bg-gray-400', 'cursor-not-allowed');
+        btn.classList.add('bg-pastel-brown', 'hover:bg-pastel-brown-hover', 'cursor-pointer');
+      } else {
+        btn.disabled = true;
+        btn.classList.remove('bg-pastel-brown', 'hover:bg-pastel-brown-hover', 'cursor-pointer');
+        btn.classList.add('opacity-50', 'bg-gray-400', 'cursor-not-allowed');
+      }
+    }
+
+    // Go to Screen 3 (Payment Process)
+    function goToPayment() {
+      switchScreen('screen-purchase', 'screen-payment');
+      
+      // Start 3-minute timer (180 seconds)
+      startCountdown(180);
+      
+      // Reset receipt view state and toast
+      document.getElementById('receipt-container').classList.add('hidden');
+      document.getElementById('btn-save-receipt').classList.remove('hidden');
+      
+      const toast = document.getElementById('floating-toast');
+      toast.classList.add('hidden', 'scale-95', 'opacity-0');
+      
+      // Clear legacy timeouts
+      clearTimeout(toastTimeout1);
+      clearTimeout(toastTimeout2);
+    }
+
+    // Generate Invoice Receipt logic
+    function generateReceipt() {
+      // Create Unique Receipt Code
+      const randNum = Math.floor(1000 + Math.random() * 9000);
+      const randId = `OWKE-RASA-${randNum}`;
+      
+      const menuData = menus[currentSelection.menuKey];
+      const basePrice = menuData.sizes[currentSelection.size];
+      const totalAmount = (basePrice * currentSelection.qty) + BIAYA_TAMBAHAN;
+
+      // Populate Receipt Card Elements
+      document.getElementById('receipt-id').textContent = `ID: ${randId}`;
+      document.getElementById('receipt-item-name').textContent = menuData.title;
+      document.getElementById('receipt-item-size').textContent = currentSelection.size.toUpperCase();
+      document.getElementById('receipt-item-qty').textContent = `${currentSelection.qty}x`;
+      document.getElementById('receipt-item-price').textContent = `Rp ${basePrice.toLocaleString('id-ID')}`;
+      document.getElementById('receipt-total').textContent = `Rp ${totalAmount.toLocaleString('id-ID')}`;
+
+      // Show Receipt Block with animation
+      const receiptCard = document.getElementById('receipt-container');
+      receiptCard.classList.remove('hidden');
+      
+      // Hide Save Receipt Button
+      document.getElementById('btn-save-receipt').classList.add('hidden');
+
+      // Trigger Floating Messages Sequence
+      showFloatingNotifications();
+    }
+
+    // Floating notifications sequence (Permanently displaying the copy button & number)
+    function showFloatingNotifications() {
+      const toast = document.getElementById('floating-toast');
+      const toastText = document.getElementById('floating-toast-text');
+      const copyBtn = document.getElementById('btn-copy-wa');
+      const waDisplay = document.getElementById('wa-display-area');
+      
+      // Show Updated First Message
+      toastText.textContent = "Screenshot Struk ini lalu kirim ke nomor wa dibawah";
+      copyBtn.classList.remove('hidden');
+      waDisplay.classList.remove('hidden');
+      
+      // Reset opacity
+      toastText.classList.remove('opacity-0');
+      copyBtn.classList.remove('opacity-0');
+      waDisplay.classList.remove('opacity-0');
+
+      toast.classList.remove('hidden');
+      // Force trigger DOM reflow for animations
+      void toast.offsetWidth;
+      toast.classList.remove('scale-95', 'opacity-0');
+      toast.classList.add('scale-100', 'opacity-100');
+
+      // After 10 seconds, only transition the main instruction text.
+      // The WhatsApp number (waDisplay) and Copy button (copyBtn) STAY completely visible.
+      toastTimeout1 = setTimeout(() => {
+        toastText.classList.add('opacity-0');
+        
+        toastTimeout2 = setTimeout(() => {
+          toastText.textContent = "Kirim bukti pembayaran ke nomor tersebut untuk Pembayaran Final yaa 😄❤️";
+          toastText.classList.remove('opacity-0');
+        }, 300);
+        
+      }, 10000);
+    }
+
+    // Clipboard Copy logic
+    function copyWA() {
+      const numberToCopy = "085694721512";
+      
+      const textArea = document.createElement("textarea");
+      textArea.value = numberToCopy;
+      textArea.style.position = "fixed";  // Avoid scrolling to bottom
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showAlert("Nomor WhatsApp berhasil disalin! 😊");
+        } else {
+          showAlert("Gagal menyalin nomor.");
+        }
+      } catch (err) {
+        showAlert("Maaf, tidak dapat menyalin.");
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    // Countdown 3 Minutes implementation
+    function startCountdown(durationSeconds) {
+      clearInterval(timerInterval);
+      let timer = durationSeconds;
+      const display = document.getElementById('countdown-timer');
+
+      const updateTimerDisplay = () => {
+        let minutes = parseInt(timer / 60, 10);
+        let seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          clearInterval(timerInterval);
+          showAlert("Batas waktu pembayaran habis! Transaksi Anda dibatalkan.");
+          resetAndBackToHome();
+        }
+      };
+
+      updateTimerDisplay(); // Initial trigger
+      timerInterval = setInterval(updateTimerDisplay, 1000);
+    }
+
+    // Screen swapper transition helper
+    function switchScreen(fromId, toId) {
+      const fromEl = document.getElementById(fromId);
+      const toEl = document.getElementById(toId);
+      
+      fromEl.classList.add('opacity-0', 'transition-opacity', 'duration-200');
+      setTimeout(() => {
+        fromEl.classList.add('hidden');
+        fromEl.classList.remove('opacity-0');
+        
+        toEl.classList.remove('hidden');
+        toEl.classList.add('opacity-0');
+        void toEl.offsetWidth; // force layout trigger
+        toEl.classList.remove('opacity-0');
+        toEl.classList.add('transition-opacity', 'duration-200');
+      }, 200);
+    }
+
+    // Navigation back triggers
+    function backToHome() {
+      switchScreen('screen-purchase', 'screen-home');
+    }
+
+    function resetAndBackToHome() {
+      clearInterval(timerInterval);
+      clearTimeout(toastTimeout1);
+      clearTimeout(toastTimeout2);
+      
+      currentSelection = {
+        menuKey: null,
+        size: null,
+        qty: 1
+      };
+      
+      switchScreen('screen-payment', 'screen-home');
+    }
+  </script>
+</body>
+</html>
+
+```
